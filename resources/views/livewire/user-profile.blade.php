@@ -23,15 +23,46 @@
             </div>
             <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
                 @foreach($user->pictures as $picture)
-                    <a href="{{ asset('storage/' . $picture->path) }}" target="_blank" class="block group">
+                    <button
+                        type="button"
+                        wire:click="openModal('{{ asset('storage/' . $picture->path) }}')"
+                        class="block group focus:outline-none"
+                    >
                         <img
                             src="{{ asset('storage/' . $picture->path) }}"
                             alt="User Photo"
                             class="rounded-lg object-cover w-full aspect-square shadow group-hover:opacity-80 transition"
                         >
-                    </a>
+                    </button>
                 @endforeach
             </div>
+
+            @if($modalImage)
+                <div class="fixed inset-0 bg-black/80 flex items-center justify-center z-50"
+                     wire:click.self="closeModal">
+                    <div class="rounded-xl border shadow-lg p-4 sm:p-8 w-full max-w-lg sm:max-w-2xl flex flex-col items-center
+                        bg-neutral-100 dark:bg-neutral-900
+                        border-neutral-200 dark:border-neutral-700
+                        relative">
+
+                        <!-- Close X always in the same place -->
+                        <button
+                            wire:click="closeModal"
+                            class="absolute top-4 right-4 text-neutral-500 dark:text-neutral-400 text-3xl hover:text-red-500 transition focus:outline-none"
+                            title="Zamknij"
+                        >&times;</button>
+
+                        <img
+                            src="{{ $modalImage }}"
+                            alt="Zdjęcie użytkownika"
+                            class="w-full max-h-[50vh] sm:max-h-[32rem] object-cover rounded-xl transition-all"
+                            style="aspect-ratio: 1/1; object-fit: cover;"
+                        >
+
+                    </div>
+                </div>
+            @endif
+
         </div>
     @endif
 

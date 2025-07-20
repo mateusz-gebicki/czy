@@ -8,6 +8,7 @@ use App\Models\User;
 class UserProfile extends Component
 {
     public User $user;
+    public $modalImage = null;
 
     public function mount(User $user)
     {
@@ -18,4 +19,15 @@ class UserProfile extends Component
     {
         return view('livewire.user-profile');
     }
+
+    public function openModal($imagePath)
+    {
+        $this->modalImage = $imagePath;
+    }
+
+    public function closeModal()
+    {
+        $this->modalImage = null;
+    }
+
 }
