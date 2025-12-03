@@ -1,21 +1,23 @@
-<div class="flex flex-col items-center justify-center min-h-[300px] sm:min-h-[500px] w-full px-2">
+<div class="flex flex-col items-center justify-center min-h-[300px] sm:min-h-[500px] w-full px-2 transition-colors duration-300">
     @if ($currentPicture)
-        <div class="rounded-xl border shadow-lg p-4 sm:p-8 w-full max-w-lg sm:max-w-2xl flex flex-col items-center
-                    bg-neutral-100 dark:bg-neutral-900
-                    border-neutral-200 dark:border-neutral-700">
+        <div class="rounded-2xl border shadow-xl p-4 sm:p-8 w-full max-w-lg sm:max-w-2xl flex flex-col items-center
+                    bg-white/80 dark:bg-neutral-900
+                    border-pink-200 dark:border-neutral-700
+                    backdrop-blur-md"
+             style="box-shadow: 0 8px 32px 0 rgba(207, 154, 255, 0.2);">
             <div class="flex gap-4 sm:gap-6 mb-4 sm:mb-6 w-full items-center">
                 <img
                     src="{{ $currentPicture->user->profile_photo_url }}"
                     alt="Avatar"
-                    class="rounded-full w-10 h-10 sm:w-12 sm:h-12 object-cover shadow"
+                    class="rounded-full w-10 h-10 sm:w-12 sm:h-12 object-cover shadow border-2 border-pink-200 dark:border-neutral-700"
                 >
-                <div class="font-bold text-lg sm:text-2xl text-neutral-900 dark:text-neutral-200">
+                <div class="font-bold text-lg sm:text-2xl text-pink-700 dark:text-neutral-200">
                     <a href="{{ route('user.profile', $currentPicture->user) }}"
-                       class="font-bold text-lg sm:text-2xl text-neutral-900 dark:text-neutral-200 hover:underline">
+                       class="font-bold text-lg sm:text-2xl text-pink-700 dark:text-neutral-200 hover:underline">
                         {{ $currentPicture->user->name ?? 'Unknown' }}
                     </a>
                 </div>
-                <div class="text-neutral-500 dark:text-neutral-400 text-sm sm:text-base">
+                <div class="text-purple-500 dark:text-neutral-400 text-sm sm:text-base">
                     {{ $currentPicture->created_at->diffForHumans() }}
                 </div>
             </div>
@@ -23,8 +25,8 @@
             <img
                 src="{{ asset('storage/' . $currentPicture->path) }}"
                 alt="Picture"
-                class="w-full max-h-[50vh] sm:max-h-[32rem] object-cover rounded-xl mb-4 sm:mb-6 transition-all"
-                style="aspect-ratio: 1/1; object-fit: cover;"
+                class="w-full max-h-[50vh] sm:max-h-[32rem] object-cover rounded-2xl mb-4 sm:mb-6 border border-white/60 shadow-md transition-all"
+                style="aspect-ratio: 1/1; object-fit: cover; background:rgba(255,255,255,0.18)"
             >
 
             <div class="flex gap-6 sm:gap-12 mt-2 sm:mt-4">
@@ -32,11 +34,11 @@
                 <button
                     wire:click="skip"
                     class="flex items-center justify-center w-14 h-14 sm:w-20 sm:h-20 rounded-full
-           bg-neutral-100 dark:bg-neutral-800
-           border-2 border-red-500 dark:border-red-600
-           text-red-600 dark:text-red-600
-           hover:bg-red-500 hover:dark:bg-red-600 hover:text-white
-           transition"
+                       bg-white/80 dark:bg-neutral-800
+                       border-2 border-pink-300 dark:border-red-600
+                       text-red-400 dark:text-red-600
+                       hover:bg-pink-100 hover:dark:bg-red-600 hover:text-white
+                       shadow-lg transition"
                     title="Skip"
                 >
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 sm:w-16 sm:h-16" viewBox="0 0 24 24" fill="currentColor">
@@ -48,11 +50,11 @@
                 <button
                     wire:click="like"
                     class="flex items-center justify-center w-14 h-14 sm:w-20 sm:h-20 rounded-full
-           bg-neutral-100 dark:bg-neutral-800
-           border-2 border-pink-500 dark:border-pink-600
-           text-pink-600 dark:text-pink-600
-           hover:bg-pink-500 hover:dark:bg-pink-600 hover:text-white
-           transition"
+                       bg-white/80 dark:bg-neutral-800
+                       border-2 border-pink-400 dark:border-pink-600
+                       text-pink-600 dark:text-pink-600
+                       hover:bg-pink-100 hover:dark:bg-pink-600 hover:text-white
+                       shadow-lg transition"
                     title="Like"
                 >
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 sm:w-16 sm:h-16" viewBox="0 0 24 24" fill="currentColor">
@@ -65,7 +67,7 @@
             </div>
         </div>
     @else
-        <div class="text-center text-neutral-500 dark:text-neutral-400 text-lg sm:text-xl mt-10 sm:mt-20">
+        <div class="text-center text-pink-600 dark:text-neutral-400 text-lg sm:text-xl mt-10 sm:mt-20">
             Brak zdjęć do wyświetlenia!
         </div>
     @endif
