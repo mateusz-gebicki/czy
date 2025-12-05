@@ -6,11 +6,12 @@
                    flex flex-col
                    bg-white/80 dark:bg-neutral-900
                    border-pink-200 dark:border-neutral-700
-                   backdrop-blur-md"
-            style="height: 620px; max-height: 80vh; box-shadow: 0 8px 32px 0 rgba(207, 154, 255, 0.2);"
+                   backdrop-blur-md
+                   h-[60vh] md:h-[70vh] max-h-[840px]"
+            style="box-shadow: 0 8px 32px 0 rgba(207, 154, 255, 0.2);"
         >
             {{-- Header --}}
-            <div class="flex gap-4 sm:gap-6 mb-3 sm:mb-4 w-full items-center flex-shrink-0">
+            <div class="flex gap-4 sm:gap-6 mb-3 sm:mb-5 w-full items-center flex-shrink-0">
                 <img
                     src="{{ $currentPicture->user->profile_photo_url }}"
                     alt="Avatar"
@@ -22,13 +23,13 @@
                         {{ $currentPicture->user->name ?? 'Unknown' }}
                     </a>
                 </div>
-                <div class="text-purple-500 dark:text-neutral-400 text-xs sm:text-sm">
+                <div class="text-purple-500 dark:text-neutral-400 text-xs sm:text-base">
                     {{ $currentPicture->created_at->diffForHumans() }}
                 </div>
             </div>
 
-            {{-- Picture area --}}
-            <div class="flex-1 flex items-center justify-center mb-3 sm:mb-4 overflow-hidden">
+            {{-- Picture area (fills the middle, crops like Tinder) --}}
+            <div class="flex-1 flex items-center justify-center mb-3 sm:mb-5 overflow-hidden">
                 <img
                     src="{{ asset('storage/' . $currentPicture->path) }}"
                     alt="Picture"
@@ -38,7 +39,7 @@
             </div>
 
             {{-- Buttons --}}
-            <div class="flex gap-6 sm:gap-12 mt-1 sm:mt-2 justify-center flex-shrink-0">
+            <div class="flex gap-6 sm:gap-12 mt-1 sm:mt-3 justify-center flex-shrink-0">
                 <!-- Skip Button (Red X) -->
                 <button
                     wire:click="skip"
