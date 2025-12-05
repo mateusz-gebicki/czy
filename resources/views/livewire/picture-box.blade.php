@@ -28,14 +28,17 @@
                 </div>
             </div>
 
-            {{-- Picture area (fills the middle, crops like Tinder) --}}
-            <div class="flex-1 flex items-center justify-center mb-3 sm:mb-5 overflow-hidden">
-                <img
-                    src="{{ asset('storage/' . $currentPicture->path) }}"
-                    alt="Picture"
-                    class="w-full h-full object-cover rounded-2xl border border-white/60 shadow-md transition-all"
+            <div class="flex-1 flex items-center justify-center mb-3 sm:mb-5">
+                <div
+                    class="relative w-full h-full rounded-2xl border border-white/60 shadow-md overflow-hidden"
                     style="background:rgba(255,255,255,0.18)"
                 >
+                    <img
+                        src="{{ asset('storage/' . $currentPicture->path) }}"
+                        alt="Picture"
+                        class="absolute inset-0 w-full h-full object-cover transition-all"
+                    >
+                </div>
             </div>
 
             {{-- Buttons --}}
