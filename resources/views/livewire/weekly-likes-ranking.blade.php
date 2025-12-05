@@ -12,7 +12,7 @@
             <tr>
                 <td class="p-2 max-w-xs whitespace-nowrap overflow-hidden text-ellipsis align-middle">
                     <img
-                        src="{{ $user->profile_photo_path }}"
+                        src="{{ $user->profile_photo_path ? Storage::url($user->profile_photo_path) : asset('images/default-avatar.png') }}"
                         alt="Avatar"
                         class="rounded-full w-12 h-12 object-cover shadow inline-block mr-2"
                     >
