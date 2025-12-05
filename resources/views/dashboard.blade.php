@@ -3,7 +3,7 @@
         @livewire('picture-upload')
     </div>
 
-    <div class="flex flex-col items-center justify-center min-h-[60vh]">
+    <div class="flex flex-col items-center justify-start sm:justify-center min-h-[60vh]">
         @livewire('picture-box')
     </div>
 </x-layouts.app>
