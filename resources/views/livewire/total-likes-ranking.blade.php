@@ -1,3 +1,8 @@
+@php
+    use Illuminate\Support\Facades\Storage;
+    use Illuminate\Support\Str;
+@endphp
+
 <div class="bg-white dark:bg-neutral-800 rounded-xl p-6 shadow-md">
     <h2 class="text-2xl font-bold mb-4">🏆 All-Time Ranking</h2>
     <table class="min-w-full">
@@ -12,12 +17,15 @@
             <tr>
                 <td class="p-2 max-w-xs whitespace-nowrap overflow-hidden text-ellipsis align-middle">
                     <img
-                        src="{{ $user->profile_photo_path }}"
+                        src="{{ Str::startsWith($user->profile_photo_url, 'http')
+                                        ? $user->profile_photo_url
+                                        : asset('storage/' . $user->profile_photo_path) }}"
                         alt="Avatar"
                         class="rounded-full w-12 h-12 object-cover shadow inline-block mr-2"
-                    >
+                    />
                     {{ $user->name }}
                 </td>
+
                 <td class="p-2">
                     {{ $user->received_likes_count }}
                 </td>
