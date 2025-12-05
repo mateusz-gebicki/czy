@@ -1,18 +1,17 @@
 <div class="max-w-2xl mx-auto mt-10 p-8 bg-neutral-900 rounded-xl shadow border border-neutral-700">
     <div class="flex items-center gap-6">
         <img
-            src="{{ $user->profile_photo_url }}"
+            src="{{ $user->profile_photo_url ?? asset('default-avatar.png') }}"
             alt="Avatar"
-            class="rounded-full w-20 h-20 object-cover shadow"
-        >
-        <div>
-            <div class="font-bold text-2xl text-neutral-200">{{ $user->name }}</div>
-            <div class="text-neutral-400">{{ $user->email }}</div>
-            @if($user->description)
-                <div class="mt-3 text-neutral-300 whitespace-pre-line">
-                    {{ $user->description }}
-                </div>
-            @endif
+            class="rounded-full w-12 h-12 object-cover shadow inline-block mr-2"
+        />
+        <div class="font-bold text-2xl text-neutral-200">{{ $user->name }}</div>
+        <div class="text-neutral-400">{{ $user->email }}</div>
+        @if($user->description)
+            <div class="mt-3 text-neutral-300 whitespace-pre-line">
+                {{ $user->description }}
+            </div>
+        @endif
         </div>
     </div>
 
